@@ -49,8 +49,8 @@ Vagrant.configure("2") do |config|
      db.vm.provision "shell", inline: <<-SHELL
        yum install -y epel-release 
        yum update -y
-       rpm -Uvh https://yum.postgresql.org/10/redhat/rhel-7-x86_64/pgdg-centos10-10-2.noarch.rpm
-       yum install postgresql10-server postgresql10
+       yum install https://download.postgresql.org/pub/repos/yum/10/redhat/rhel-7.3-x86_64/pgdg-redhat10-10-2.noarch.rpm -y 
+       yum -y install postgresql10 postgresql10-server postgresql10-contrib postgresql10-libs -y
        /usr/pgsql-10/bin/postgresql-10-setup initdb
        systemctl start postgresql-10.service
        systemctl enable postgresql-10.service
